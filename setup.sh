@@ -19,6 +19,9 @@ if [ $1 == -all ]; then
     
     # Setup Frequent Packages
     sudo dnf install ${package_list[*]}
+    wget -O atom.rpm https://atom.io/download/rpm
+    rpm --install atom.rpm
+    rm atom.rpm
     
     # Setup Python Packages
     sudo pip install --upgrade pip
