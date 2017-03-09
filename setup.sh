@@ -7,7 +7,7 @@ if [ $1 == -all ]; then
     # Setup Easy Alias
     cp addAlias.sh ~/.addAlias.sh
     pushd ~
-    echo "alias aa='source .addAlias.sh'" >> .bashrc
+    echo "alias aa='source ~/.addAlias.sh'" >> .bashrc
     . .bashrc
 
     #Setup Custom Aliases
