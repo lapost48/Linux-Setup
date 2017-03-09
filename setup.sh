@@ -1,6 +1,6 @@
 #!/bin/bash
 
-package_list=( emacs python-devel python-matplotlib )
+package_list=( emacs python-devel python-matplotlib java-1.8.0-openjdk-devel )
 pypackage_list=( tensorflow numpy scipy pillow )
 
 if [ $1 == -all ]; then
