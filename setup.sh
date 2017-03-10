@@ -49,6 +49,12 @@ else
 		sudo pip install --upgrade pip
 		sudo pip install ${pypackage_list[*]}
 		;;
+	    -steam) # Install Steam
+		su -c 'dnf -y install xorg-x11-drv-amdgpu mesa-libGL.i686 mesa-dri-drivers.i686'
+		su -c 'dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'
+		su -c 'dnf -y update'
+		su -c 'dnf -y install steam'
+		;;
 	esac
 	shift
     done
