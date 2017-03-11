@@ -45,6 +45,19 @@ else
             -d) # Setup Frequent Packages
 		sudo dnf install ${package_list[*]}
 		;;
+	    -f) # Setup xflux
+		wget https://justgetflux.com/linux/xflux64.tgz
+		tar -xvf xflux64.tgz
+		rm xflux64.tgz
+		sudo mv xflux ~/.local/bin/xflux
+		chmod 755 ~/.local/bin/xflux
+		sudo mkdir -p ~/.config/autostart
+		shift
+		echo 'Exec=~/.local/bin/xflux -z' $1 >> xflux/xflux.desktop
+		echo 'Terminal=false' >> xflux/xflux.desktop
+		echo 'Type=Application' >> xflux/xflux.desktop
+		sudo cp xflux/xflux.desktop ~/.config/autostart/
+		;;
             -p) # Setup Python Packages
 		sudo pip install --upgrade pip
 		sudo pip install ${pypackage_list[*]}
