@@ -23,6 +23,24 @@ if [ $1 == -all ]; then
     rpm --install atom.rpm
     rm atom.rpm
 
+    # Setup xflux
+    wget https://justgetflux.com/linux/xflux64.tgz
+    tar -xvf xflux64.tgz
+    rm xflux64.tgz
+    sudo mv xflux ~/.local/bin/xflux
+    chmod 755 ~/.local/bin/xflux
+    sudo mkdir -p ~/.config/autostart
+    shift
+    echo 'Exec=~/.local/bin/xflux -z' $1 >> xflux/xflux.desktop
+    echo 'Terminal=false' >> xflux/xflux.desktop
+    echo 'Type=Application' >> xflux/xflux.desktop
+    sudo cp xflux/xflux.desktop ~/.config/autostart/
+
+    # Install R and RStudio
+    sudo dnf install gstreamer gstreamer-plugins-base R
+    wget https://download1.rstudio.org/rstudio-1.0.136-x86_64.rpm
+    sudo rpm -i rstudio-1.0.136-x86_64.rpm
+
     # Setup Python Packages
     sudo pip install --upgrade pip
     sudo pip install ${pypackage_list[*]}
