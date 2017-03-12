@@ -58,6 +58,10 @@ else
 		echo 'Type=Application' >> xflux/xflux.desktop
 		sudo cp xflux/xflux.desktop ~/.config/autostart/
 		;;
+	    -r) # Install R and RStudio
+		sudo dnf install gstreamer gstreamer-plugins-base R
+		wget https://download1.rstudio.org/rstudio-1.0.136-x86_64.rpm
+		sudo rpm -i rstudio-1.0.136-x86_64.rpm
             -p) # Setup Python Packages
 		sudo pip install --upgrade pip
 		sudo pip install ${pypackage_list[*]}
